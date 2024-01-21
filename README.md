@@ -5,9 +5,9 @@
 - MVP will include:
   - CRUS for at least 1 resource
   - Unit tests, others as needed
-  - documentation on how to install, run, and edit the project 
+  - documentation on how to install, run, and edit the project
 
 
 ## Supported:
 - Python
-  - FastAPI (in progress) 
+  - FastAPI (in progress)
