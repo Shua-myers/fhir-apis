@@ -4,7 +4,7 @@
 - Folder should contain at least a MVP FHIR REST API that can be run locally
 - MVP will include:
   - CRUS for at least 1 resource
-  - Unit tests, others as needed
+  - Happy path tests for each endpoint
   - documentation on how to install, run, and edit the project
 
 
