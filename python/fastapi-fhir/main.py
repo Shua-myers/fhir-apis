@@ -3,17 +3,7 @@ from typing import Any
 
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
-
-# fhir.resources could do this for us
-class Patient(BaseModel):
-    id: str
-    active: bool = True
-    name: dict
-    telecom: dict | None = None
-    gender: str
-    birthDate: str
-
+from database_app.schemas import Patient
 
 app = FastAPI()
 
