@@ -3,7 +3,7 @@
 
 from uuid import uuid4, UUID
 from datetime import datetime
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, PositiveInt
 
 
 class Name(BaseModel):
@@ -28,7 +28,7 @@ class Telecom(BaseModel):
     system: str
     value: str
     use: str
-    rank: int
+    rank: PositiveInt
     begin_effective_dt_tm: datetime = Field(default_factory=datetime.now)
     end_effective_dt_tm: datetime  # TODO: add default for 12-31-2100
 
