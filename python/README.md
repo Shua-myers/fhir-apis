@@ -1,2 +1,11 @@
-- FastAPI (In progress)
-- Django Rest Framework
+- FastAPI (Prototype)
+  - Stubbed out basic endpoints and tests
+  - Commit to add database needs a lot of work
+    - Not really needed since REST API's can be stateless
+    - Maybe better to include read/write access to a public FHIR server instead?
+    - Is FastAPI the best choice when we want to include a database?
+    - Is SQLAlchemy the best ORM for this use case?
+    - Would this project be better off having a database that all API's can read/write to but created independently? 
+- Django Rest Framework (In-progress)
+  - "Batteries included" makes storing the data easier
+  - Shows how we can use the (django-rest-framework)[https://github.com/encode/django-rest-framework/tree/master] to add a FHIR API to an existing Django implentation
