@@ -7,12 +7,6 @@ from .models.practitioner import (
     PractitionerIdentifier,
 )
 
-# Register your models here.
-
-
-class AuthorAdmin(admin.ModelAdmin):
-    pass
-
 
 admin.site.register(Practitioner)
 admin.site.register(PractitionerAddress)
