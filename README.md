@@ -16,7 +16,8 @@
 ## FHIR API Starters:
 - Python
   - Here:
-    - FastAPI (in progress)
+    - FastAPI (Prototype - needs work)
+    - Django Rest Framework (in progress)
   - Other projects:
     - [fhirstarter](https://pypi.org/project/fhirstarter/)
       - made some minor contributions, mostly a user
