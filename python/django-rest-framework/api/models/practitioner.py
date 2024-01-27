@@ -17,18 +17,6 @@ class Practitioner(models.Model):
     birth_date = models.DateField()
 
 
-class PractitionerIdentifier(Identifier):
-    practitioner = models.ForeignKey(
-        Practitioner, on_delete=models.CASCADE, related_name="identifiers"
-    )
-
-
-class PractitionerName(HumanName):
-    practitioner = models.ForeignKey(
-        Practitioner, on_delete=models.CASCADE, related_name="names"
-    )
-
-
 class PractitionerAddress(Address):
     practitioner = models.ForeignKey(
         Practitioner, on_delete=models.CASCADE, related_name="addresses"
@@ -41,6 +29,18 @@ class PractitionerContactPoint(ContactPoint):
     )
 
 
+class PractitionerIdentifier(Identifier):
+    practitioner = models.ForeignKey(
+        Practitioner, on_delete=models.CASCADE, related_name="identifiers"
+    )
+
+
+class PractitionerName(HumanName):
+    practitioner = models.ForeignKey(
+        Practitioner, on_delete=models.CASCADE, related_name="names"
+    )
+
+
 class Qualification(models.Model):
     code = models.CharField(max_length=5)
     system = models.CharField(max_length=50)
@@ -48,6 +48,10 @@ class Qualification(models.Model):
     begin_effective_datetime = models.DateTimeField()
     end_effective_datetime = models.DateTimeField()
     issuer = models.CharField(max_length=50)
+
+    practitioner = models.ForeignKey(
+        Practitioner, on_delete=models.CASCADE, related_name="qualifications"
+    )
 
 
 class QualificationIdentifier(Identifier):
