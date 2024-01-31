@@ -27,8 +27,8 @@ class Address(models.Model):
     state = models.CharField(max_length=50)
     postal_code = models.CharField(max_length=20)
     country = models.CharField(max_length=50)
-    begin_effective_datetime = models.DateTimeField()
-    end_effective_datetime = models.DateTimeField()
+    begin_effective_datetime = models.DateTimeField(null=True)
+    end_effective_datetime = models.DateTimeField(null=True)
 
 
 class ContactPoint(models.Model):

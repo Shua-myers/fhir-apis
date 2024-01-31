@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -13,7 +15,7 @@ class Practitioner(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
-    gender = models.CharField(max_length=10, choices=Gender)
+    gender = models.CharField(max_length=10, choices=Gender, default=Gender.UNKNOWN)
     birth_date = models.DateField()
 
 
@@ -45,8 +47,8 @@ class Qualification(models.Model):
     code = models.CharField(max_length=5)
     system = models.CharField(max_length=50)
     display = models.CharField(max_length=50)
-    begin_effective_datetime = models.DateTimeField()
-    end_effective_datetime = models.DateTimeField()
+    begin_effective_datetime = models.DateTimeField(default=datetime.now())
+    end_effective_datetime = models.DateTimeField(null=True)
     issuer = models.CharField(max_length=50)
 
     practitioner = models.ForeignKey(
