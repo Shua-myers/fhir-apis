@@ -1,12 +1,13 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
+from rest_framework.request import Request
 from rest_framework.response import Response
 from api.models.practitioner import Practitioner
 from api.serializers import PractitionerSerializer
 
 
 @api_view(["GET", "POST"])
-def practitioner_list(request, format=None):
+def practitioner_list(request: Request) -> Response:
     """
     List all practitioners, or create a new practitioner.
     """
@@ -24,7 +25,7 @@ def practitioner_list(request, format=None):
 
 
 @api_view(["GET", "PUT", "DELETE"])
-def practitioner_detail(request, pk, format=None):
+def practitioner_detail(request: Request, pk: int) -> Response:
     """
     Retrieve, update or delete a code practitioner.
     """

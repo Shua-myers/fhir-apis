@@ -1,13 +1,9 @@
 import factory
 from faker import Faker
-from datetime import datetime
 
 from api.models.practitioner import (
     Practitioner,
     PractitionerAddress,
-    PractitionerContactPoint,
-    PractitionerIdentifier,
-    PractitionerName,
 )
 
 fake = Faker("en_US")
@@ -39,11 +35,7 @@ class PractitionerFactory(factory.django.DjangoModelFactory):
     )
 
 
+# TODO: add factories and fakers for the rest of the models
 # PractitionerContactPointFactory
 # PractitionerIdentifierFactory
 # PractitionerNameFactory
-# QualificationFactory
-# QualificationIdentifierFactory
-
-# TODO: add factories and fakers for the rest of the models
-# test, but also verify in UI
