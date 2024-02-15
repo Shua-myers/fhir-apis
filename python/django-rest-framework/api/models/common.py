@@ -2,7 +2,21 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-class Address(models.Model):
+class StandardDatesMixin(models.Model):
+    """
+    Mixin to apply standard date fields to certain models.
+    """
+
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(null=True)
+    begin_effective_datetime = models.DateTimeField(auto_now_add=True)
+    end_effective_datetime = models.DateTimeField(null=True)
+
+    class Meta:
+        abstract = True
+
+
+class Address(StandardDatesMixin):
     class AddressUse(models.TextChoices):
         HOME = "home", _("Home")
         WORK = "work", _("Work")
@@ -27,11 +41,9 @@ class Address(models.Model):
     state = models.CharField(max_length=50)
     postal_code = models.CharField(max_length=20)
     country = models.CharField(max_length=50)
-    begin_effective_datetime = models.DateTimeField(null=True)
-    end_effective_datetime = models.DateTimeField(null=True)
 
 
-class ContactPoint(models.Model):
+class ContactPoint(StandardDatesMixin):
     class ContactPointSystem(models.TextChoices):
         PHONE = "phone", _("Phone")
         FAX = "fax", _("Fax")
@@ -54,11 +66,9 @@ class ContactPoint(models.Model):
     value = models.CharField(max_length=100)
     use = models.CharField(max_length=10)
     rank = models.PositiveSmallIntegerField()
-    begin_effective_datetime = models.DateTimeField()
-    end_effective_datetime = models.DateTimeField()
 
 
-class HumanName(models.Model):
+class HumanName(StandardDatesMixin):
     class NameUse(models.TextChoices):
         USUAL = "usual", _("Usual")
         OFFICIAL = "official", _("Official")
@@ -74,11 +84,9 @@ class HumanName(models.Model):
     given = models.CharField(max_length=100)
     prefix = models.CharField(max_length=50)
     suffix = models.CharField(max_length=50)
-    begin_effective_datetime = models.DateTimeField()
-    end_effective_datetime = models.DateTimeField()
 
 
-class Identifier(models.Model):
+class Identifier(StandardDatesMixin):
     class IdentifierUse(models.TextChoices):
         USUAL = "usual", _("Usual")
         OFFICIAL = "official", _("Official")
@@ -94,6 +102,4 @@ class Identifier(models.Model):
     type_display = models.CharField(max_length=50)
     system = models.CharField(max_length=50)
     value = models.CharField(max_length=50)
-    begin_effective_datetime = models.DateTimeField()
-    end_effective_datetime = models.DateTimeField()
     assigner = models.CharField(max_length=50)

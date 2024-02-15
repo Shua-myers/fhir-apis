@@ -16,7 +16,7 @@ class Practitioner(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
     gender = models.CharField(max_length=10, choices=Gender, default=Gender.UNKNOWN)
-    birth_date = models.DateField()
+    birth_date = models.DateField(null=True)
 
 
 class PractitionerAddress(Address):
@@ -47,9 +47,9 @@ class Qualification(models.Model):
     code = models.CharField(max_length=5)
     system = models.CharField(max_length=50)
     display = models.CharField(max_length=50)
-    begin_effective_datetime = models.DateTimeField(default=datetime.now())
+    begin_effective_datetime = models.DateTimeField(auto_now_add=True)
     end_effective_datetime = models.DateTimeField(null=True)
-    issuer = models.CharField(max_length=50)
+    issuer = models.CharField(max_length=50, null=True)
 
     practitioner = models.ForeignKey(
         Practitioner, on_delete=models.CASCADE, related_name="qualifications"

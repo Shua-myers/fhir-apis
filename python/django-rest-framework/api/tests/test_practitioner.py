@@ -64,6 +64,10 @@ def test_create(practitioner_message: Mapping[str, Any]):
     response = practitioner_list(request)
     assert response.status_code == 200
     assert Practitioner.objects.count() == 1
+
+    practitioner = Practitioner.objects.first()
+
+    assert practitioner.names.first().family == "Voigt"
     # field level asserts
 
 
