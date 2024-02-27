@@ -57,8 +57,8 @@ class PractitionerSerializer(serializers.ModelSerializer):
     qs = Practitioner.objects.prefetch_related(
         "addresses", "contact_points", "identifiers", "names", "qualifications"
     )
-    identifiers = PractitionerIdentifierSerializer(many=True)
-    names = PractitionerNameSerializer(many=True)
-    contact_points = PractitionerContactPointSerializer(many=True)
-    addresses = PractitionerAddressSerializer(many=True)
-    qualifications = QualificationIdentifierSerializer(many=True)
+    identifiers = PractitionerIdentifierSerializer(many=True, required=False)
+    names = PractitionerNameSerializer(many=True, required=False)
+    contact_points = PractitionerContactPointSerializer(many=True, required=False)
+    addresses = PractitionerAddressSerializer(many=True, required=False)
+    qualifications = QualificationIdentifierSerializer(many=True, required=False)

@@ -17,6 +17,7 @@ def practitioner_list(request: Request) -> Response:
         return Response(serializer.data)
 
     elif request.method == "POST":
+        # TODO: get this actually working - create works but none of the related models are being written to correctly
         serializer = PractitionerSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
