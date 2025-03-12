@@ -28,3 +28,5 @@
       - inspiration for this project
       - FastAPI example is a cruder, simpler implementation
       - would consider using in a Python dev environment
+- Javascript
+  - Node.js: basic FHIR API using pure Node.js (no framework)   
