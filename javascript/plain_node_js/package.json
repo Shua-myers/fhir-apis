@@ -1,0 +1,42 @@
+{
+    "name": "plain_node_js",
+    "version": "1.0.0",
+    "description": "Basic FHIR API written using plain node.js",
+    "main": "src/server.js",
+    "type": "module",
+    "scripts": {
+        "start": "nodemon --env-file=.env src/server.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint ."
+    },
+    "author": "Josh Myers",
+    "license": "MIT",
+    "devDependencies": {
+        "@eslint/js": "^9.22.0",
+        "eslint": "^9.22.0",
+        "globals": "^16.0.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^15.4.3",
+        "nodemon": "^3.1.9",
+        "prettier": "^3.5.3"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.7"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js,jsx}": [
+            "prettier --write",
+            "eslint --fix",
+            "git add"
+        ],
+        "*.{html,css,less,ejs}": [
+            "prettier --write",
+            "git add"
+        ]
+    }
+}
